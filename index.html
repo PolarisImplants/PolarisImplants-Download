@@ -9,9 +9,8 @@
 :root{
   --bg:#0b1220;
   --card:#070c18;
-  --border:#1f2937;
   --text:#e5e7eb;
-  --muted:#9ca3af;
+  --muted:#cbd5f5;
   --blue:#1d4ed8;
   --blue2:#2563eb;
   --radius:14px;
@@ -24,110 +23,90 @@ body{
   color:var(--text);
 }
 
-/* ===== Bandeau défilant immédiat ===== */
+/* ===== Bandeau défilant ===== */
 .marquee{
-  position:relative;
-  overflow:hidden;
   background:#1d4ed8;
   color:#fff;
-  border-bottom:1px solid rgba(255,255,255,.15);
-}
-
-.marquee-track{
-  display:flex;
-  width:max-content;
-  animation: marquee 18s linear infinite;
-}
-
-.marquee span{
-  padding:10px 40px;
-  font-weight:600;
+  overflow:hidden;
   white-space:nowrap;
 }
 
-@keyframes marquee{
+.marquee-content{
+  display:inline-flex;
+  animation:scroll 14s linear infinite;
+}
+
+.marquee-content span{
+  padding:10px 40px;
+  font-weight:600;
+}
+
+@keyframes scroll{
   from{ transform:translateX(0); }
   to{ transform:translateX(-50%); }
 }
 
-/* ===== Texte fixe ===== */
-.notice{
-  text-align:center;
-  padding:14px 16px;
-  font-size:14.5px;
-  color:#cbd5f5;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-/* ===== Contenu ===== */
 .wrap{
-  max-width:520px;
+  max-width:600px;
   margin:auto;
-  padding:32px 16px 50px;
+  padding:30px 16px 40px;
 }
 
 .hero{
   text-align:center;
-  margin-bottom:24px;
+  margin-bottom:22px;
 }
 
 .hero h1{
-  margin:0 0 8px;
+  margin:0 0 6px;
   font-size:30px;
 }
 
 .hero p{
   margin:0;
-  color:#cbd5f5;
+  color:var(--muted);
+  font-weight:600;
 }
 
 .card{
   background:var(--card);
-  border:1px solid rgba(255,255,255,.08);
   border-radius:var(--radius);
   padding:22px;
   box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
-label{
-  display:block;
-  margin-top:14px;
-  font-size:14px;
-  color:var(--muted);
+.card p{
+  color:#cbd5f5;
+  margin-bottom:14px;
 }
 
 input{
   width:100%;
-  margin-top:6px;
-  padding:11px;
+  padding:12px;
+  margin-bottom:12px;
   border-radius:10px;
-  border:1px solid rgba(255,255,255,.15);
-  background:#020617;
-  color:#fff;
+  border:none;
   font-size:15px;
 }
 
 .btn{
-  margin-top:22px;
+  display:block;
   width:100%;
-  padding:13px;
+  padding:14px;
   border-radius:999px;
   background:var(--blue);
-  border:none;
   color:#fff;
-  font-size:16px;
-  font-weight:600;
-  cursor:pointer;
+  font-weight:700;
+  text-decoration:none;
+  text-align:center;
 }
 
-.btn:hover{
-  background:var(--blue2);
-}
+.btn:hover{ background:var(--blue2); }
 
 .footer{
   text-align:center;
-  margin-top:30px;
-  font-size:13px;
+  margin-top:26px;
+  font-size:12px;
   color:#9ca3af;
 }
 </style>
@@ -135,46 +114,57 @@ input{
 
 <body>
 
-<!-- Bandeau défilant -->
+<!-- Bandeau -->
 <div class="marquee">
-  <div class="marquee-track">
-    <span>🖨️ Pour une impression 1:1, aller dans la boîte de dialogue, ouvrir « Paramètres supplémentaires » et cliquer sur « Taille réelle »</span>
-    <span>🖨️ Pour une impression 1:1, aller dans la boîte de dialogue, ouvrir « Paramètres supplémentaires » et cliquer sur « Taille réelle »</span>
+  <div class="marquee-content">
+    <span>📐 Pour une impression 1:1, aller dans la boîte de dialogue, paramètres supplémentaires et cliquer sur Taille réelle</span>
+    <span>📐 Pour une impression 1:1, aller dans la boîte de dialogue, paramètres supplémentaires et cliquer sur Taille réelle</span>
   </div>
-</div>
-
-<!-- Texte fixe -->
-<div class="notice">
-  Entrez vos informations : un lien de téléchargement de l’application <b>PolarisImplants</b> vous sera envoyé par e-mail
 </div>
 
 <div class="wrap">
   <div class="hero">
     <h1>PolarisImplants</h1>
-    <p><b>La validation par le réel</b></p>
+    <p>La validation par le réel</p>
   </div>
 
   <div class="card">
-    <form action="mailto:polarisimplants@gmail.com" method="post" enctype="text/plain">
-      <label>Nom</label>
-      <input type="text" name="Nom" required>
+    <p>
+      Entrez votre <b>nom</b>, <b>prénom</b> et <b>adresse e-mail</b>.<br>
+      Un lien de téléchargement de l’application <b>PolarisImplants</b> vous sera envoyé.
+    </p>
 
-      <label>Prénom</label>
-      <input type="text" name="Prénom" required>
+    <input id="nom" placeholder="Nom">
+    <input id="prenom" placeholder="Prénom">
+    <input id="email" placeholder="Adresse e-mail">
 
-      <label>Adresse e-mail</label>
-      <input type="email" name="Email" required>
-
-      <button class="btn" type="submit">
-        Recevoir le lien de téléchargement
-      </button>
-    </form>
+    <a class="btn" href="#" onclick="envoyerMail()">Télécharger l’application</a>
   </div>
 
   <div class="footer">
     © 2025 PolarisImplants
   </div>
 </div>
+
+<script>
+function envoyerMail(){
+  const nom = encodeURIComponent(document.getElementById('nom').value);
+  const prenom = encodeURIComponent(document.getElementById('prenom').value);
+  const email = encodeURIComponent(document.getElementById('email').value);
+
+  const sujet = "Demande%20de%20t%C3%A9l%C3%A9chargement%20PolarisImplants";
+
+  const corps =
+    "Nom%20=%20" + nom +
+    "%0APr%C3%A9nom%20=%20" + prenom +
+    "%0AEmail%20=%20" + email;
+
+  window.location.href =
+    "mailto:polarisimplants@gmail.com" +
+    "?subject=" + sujet +
+    "&body=" + corps;
+}
+</script>
 
 </body>
 </html>
