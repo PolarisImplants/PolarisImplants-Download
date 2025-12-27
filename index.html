@@ -2,20 +2,21 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>PolarisImplants — Téléchargement</title>
+<title>PolarisImplants – Téléchargement</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 :root{
   --bg:#0b1220;
   --card:#070c18;
+  --border:#1f2937;
   --text:#e5e7eb;
-  --muted:#cbd5f5;
-  --muted2:#9ca3af;
+  --muted:#9ca3af;
   --blue:#1d4ed8;
   --blue2:#2563eb;
   --radius:14px;
 }
+
 body{
   margin:0;
   font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -23,51 +24,61 @@ body{
   color:var(--text);
 }
 
-/* ===== BANDEAU DÉFILANT (VISIBLE IMMÉDIATEMENT) ===== */
+/* ===== Bandeau défilant immédiat ===== */
 .marquee{
-  background:#1d4ed8;
+  position:relative;
   overflow:hidden;
-  white-space:nowrap;
-}
-.marquee span{
-  display:inline-block;
-  padding:10px 0;
-  font-weight:700;
-  animation:marq 14s linear infinite;
-}
-@keyframes marq{
-  0%{transform:translateX(0);}
-  100%{transform:translateX(-100%);}
+  background:#1d4ed8;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.15);
 }
 
-/* ===== TEXTE FIXE SOUS LE BANDEAU ===== */
+.marquee-track{
+  display:flex;
+  width:max-content;
+  animation: marquee 18s linear infinite;
+}
+
+.marquee span{
+  padding:10px 40px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+@keyframes marquee{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+/* ===== Texte fixe ===== */
 .notice{
   text-align:center;
   padding:14px 16px;
-  background:#0a1020;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  color:var(--muted);
   font-size:14.5px;
+  color:#cbd5f5;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
+/* ===== Contenu ===== */
 .wrap{
   max-width:520px;
-  margin:0 auto;
-  padding:28px 16px 40px;
+  margin:auto;
+  padding:32px 16px 50px;
 }
 
 .hero{
   text-align:center;
-  margin-bottom:18px;
+  margin-bottom:24px;
 }
+
 .hero h1{
-  margin:0 0 6px;
-  font-size:28px;
+  margin:0 0 8px;
+  font-size:30px;
 }
+
 .hero p{
   margin:0;
-  color:var(--muted2);
-  font-size:14.5px;
+  color:#cbd5f5;
 }
 
 .card{
@@ -75,82 +86,76 @@ body{
   border:1px solid rgba(255,255,255,.08);
   border-radius:var(--radius);
   padding:22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
 label{
   display:block;
-  margin-top:12px;
-  font-weight:600;
+  margin-top:14px;
   font-size:14px;
+  color:var(--muted);
 }
+
 input{
   width:100%;
-  padding:11px;
   margin-top:6px;
+  padding:11px;
   border-radius:10px;
   border:1px solid rgba(255,255,255,.15);
-  background:#0b1220;
-  color:white;
+  background:#020617;
+  color:#fff;
   font-size:15px;
 }
 
-button{
-  margin-top:20px;
+.btn{
+  margin-top:22px;
   width:100%;
   padding:13px;
   border-radius:999px;
-  border:none;
   background:var(--blue);
-  color:white;
-  font-weight:700;
+  border:none;
+  color:#fff;
   font-size:16px;
+  font-weight:600;
   cursor:pointer;
 }
-button:hover{background:var(--blue2);}
+
+.btn:hover{
+  background:var(--blue2);
+}
 
 .footer{
   text-align:center;
-  margin-top:26px;
-  font-size:12.5px;
-  color:rgba(255,255,255,.45);
+  margin-top:30px;
+  font-size:13px;
+  color:#9ca3af;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BANDEAU DÉFILANT -->
+<!-- Bandeau défilant -->
 <div class="marquee">
-  <span>
-    ℹ️ Pour une impression 1:1, aller dans la boîte de dialogue, à « Paramètres supplémentaires » puis cliquer sur « Taille réelle »
-  </span>
+  <div class="marquee-track">
+    <span>🖨️ Pour une impression 1:1, aller dans la boîte de dialogue, ouvrir « Paramètres supplémentaires » et cliquer sur « Taille réelle »</span>
+    <span>🖨️ Pour une impression 1:1, aller dans la boîte de dialogue, ouvrir « Paramètres supplémentaires » et cliquer sur « Taille réelle »</span>
+  </div>
 </div>
 
-<!-- TEXTE FIXE -->
+<!-- Texte fixe -->
 <div class="notice">
-  PolarisImplants permet de générer une image à l’échelle réelle (1:1) destinée à être imprimée sur feuille transparente
-  et positionnée directement sur la plaque réelle pour le forage.
+  Entrez vos informations : un lien de téléchargement de l’application <b>PolarisImplants</b> vous sera envoyé par e-mail
 </div>
 
 <div class="wrap">
-
   <div class="hero">
     <h1>PolarisImplants</h1>
     <p><b>La validation par le réel</b></p>
   </div>
 
   <div class="card">
-    <p style="color:var(--muted);font-size:15px;">
-      Entrez vos informations ci-dessous.<br>
-      <b>Un lien de téléchargement de l’application PolarisImplants vous sera envoyé.</b>
-    </p>
-
-    <!-- FORMULAIRE MAILTO -->
-    <form
-      action="mailto:polarisimplants@gmail.com"
-      method="post"
-      enctype="text/plain"
-    >
+    <form action="mailto:polarisimplants@gmail.com" method="post" enctype="text/plain">
       <label>Nom</label>
       <input type="text" name="Nom" required>
 
@@ -160,23 +165,16 @@ button:hover{background:var(--blue2);}
       <label>Adresse e-mail</label>
       <input type="email" name="Email" required>
 
-      <input type="hidden" name="Objet" value="Demande téléchargement PolarisImplants">
-
-      <button type="submit">
-        Télécharger le lien de l’application
+      <button class="btn" type="submit">
+        Recevoir le lien de téléchargement
       </button>
     </form>
   </div>
 
   <div class="footer">
-    © <span id="year"></span> PolarisImplants
+    © 2025 PolarisImplants
   </div>
-
 </div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
 
 </body>
 </html>
