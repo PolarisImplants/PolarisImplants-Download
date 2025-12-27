@@ -9,7 +9,6 @@
 :root{
   --bg:#0b1220;
   --card:#070c18;
-  --border:#1f2937;
   --text:#e5e7eb;
   --muted:#cbd5f5;
   --muted2:#9ca3af;
@@ -24,91 +23,90 @@ body{
   color:var(--text);
 }
 
-/* Bandeau défilant */
+/* ===== BANDEAU DÉFILANT (VISIBLE IMMÉDIATEMENT) ===== */
 .marquee{
-  background:linear-gradient(90deg,#1d4ed8,#2749f0,#1d4ed8);
+  background:#1d4ed8;
   overflow:hidden;
   white-space:nowrap;
 }
 .marquee span{
   display:inline-block;
   padding:10px 0;
-  font-weight:600;
-  animation:marq 18s linear infinite;
+  font-weight:700;
+  animation:marq 14s linear infinite;
 }
 @keyframes marq{
-  0%{transform:translateX(100%)}
-  100%{transform:translateX(-100%)}
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-100%);}
 }
 
-/* Message fixe */
+/* ===== TEXTE FIXE SOUS LE BANDEAU ===== */
 .notice{
   text-align:center;
-  padding:14px 12px;
-  background:rgba(255,255,255,.04);
+  padding:14px 16px;
+  background:#0a1020;
   border-bottom:1px solid rgba(255,255,255,.08);
-  font-size:14.5px;
   color:var(--muted);
+  font-size:14.5px;
 }
 
 .wrap{
   max-width:520px;
   margin:0 auto;
-  padding:32px 16px 48px;
+  padding:28px 16px 40px;
 }
 
 .hero{
   text-align:center;
-  margin-bottom:22px;
+  margin-bottom:18px;
 }
 .hero h1{
   margin:0 0 6px;
-  font-size:30px;
+  font-size:28px;
 }
 .hero p{
   margin:0;
-  color:var(--muted);
-  font-size:15px;
+  color:var(--muted2);
+  font-size:14.5px;
 }
 
 .card{
   background:var(--card);
-  border:1px solid rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:var(--radius);
   padding:22px;
-  box-shadow:0 20px 70px rgba(0,0,0,.35);
 }
 
 label{
   display:block;
-  margin-top:14px;
+  margin-top:12px;
   font-weight:600;
   font-size:14px;
 }
 input{
   width:100%;
+  padding:11px;
   margin-top:6px;
-  padding:10px;
-  border-radius:8px;
-  border:1px solid #374151;
-  background:#020617;
-  color:#fff;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.15);
+  background:#0b1220;
+  color:white;
   font-size:15px;
 }
 
-.btn{
-  margin-top:22px;
+button{
+  margin-top:20px;
   width:100%;
-  padding:12px;
+  padding:13px;
   border-radius:999px;
-  background:var(--blue);
-  color:#fff;
   border:none;
+  background:var(--blue);
+  color:white;
+  font-weight:700;
   font-size:16px;
-  font-weight:650;
   cursor:pointer;
 }
-.btn:hover{background:var(--blue2)}
+button:hover{background:var(--blue2);}
 
 .footer{
   text-align:center;
@@ -121,29 +119,38 @@ input{
 
 <body>
 
+<!-- BANDEAU DÉFILANT -->
 <div class="marquee">
   <span>
     ℹ️ Pour une impression 1:1, aller dans la boîte de dialogue, à « Paramètres supplémentaires » puis cliquer sur « Taille réelle »
   </span>
 </div>
 
+<!-- TEXTE FIXE -->
 <div class="notice">
-  PolarisImplants — <b>la validation par le réel</b>
+  PolarisImplants permet de générer une image à l’échelle réelle (1:1) destinée à être imprimée sur feuille transparente
+  et positionnée directement sur la plaque réelle pour le forage.
 </div>
 
 <div class="wrap">
 
   <div class="hero">
-    <h1>Téléchargement PolarisImplants</h1>
-    <p>
-      Entrez vos coordonnées.<br>
-      Un lien de téléchargement de l’application vous sera envoyé.
-    </p>
+    <h1>PolarisImplants</h1>
+    <p><b>La validation par le réel</b></p>
   </div>
 
   <div class="card">
-    <form action="mailto:polarisimplants@gmail.com" method="post" enctype="text/plain">
-      
+    <p style="color:var(--muted);font-size:15px;">
+      Entrez vos informations ci-dessous.<br>
+      <b>Un lien de téléchargement de l’application PolarisImplants vous sera envoyé.</b>
+    </p>
+
+    <!-- FORMULAIRE MAILTO -->
+    <form
+      action="mailto:polarisimplants@gmail.com"
+      method="post"
+      enctype="text/plain"
+    >
       <label>Nom</label>
       <input type="text" name="Nom" required>
 
@@ -153,19 +160,23 @@ input{
       <label>Adresse e-mail</label>
       <input type="email" name="Email" required>
 
-      <input type="hidden" name="Sujet" value="Demande de téléchargement PolarisImplants">
+      <input type="hidden" name="Objet" value="Demande téléchargement PolarisImplants">
 
-      <button class="btn" type="submit">
-        Télécharger l’application PolarisImplants
+      <button type="submit">
+        Télécharger le lien de l’application
       </button>
     </form>
   </div>
 
   <div class="footer">
-    © 2025 PolarisImplants — Tous droits réservés
+    © <span id="year"></span> PolarisImplants
   </div>
 
 </div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
