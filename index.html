@@ -31,20 +31,20 @@ body{
   white-space:nowrap;
 }
 
-.marquee-content{
-  display:inline-flex;
-  transform:translateX(0);
+.marquee-track{
+  display:flex;
+  width:max-content;
   animation:scroll 18s linear infinite;
 }
 
-.marquee-content span{
+.marquee-track span{
   padding:10px 40px;
   font-weight:600;
 }
 
 @keyframes scroll{
-  0%   { transform:translateX(0); }
-  100% { transform:translateX(-50%); }
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
 }
 
 .wrap{
@@ -117,9 +117,9 @@ input{
 
 <!-- Bandeau -->
 <div class="marquee">
-  <div class="marquee-content">
-    <span>📐 Pour une impression 1:1, aller dans Parametres supplementaires et cliquer sur Taille reelle</span>
-    <span>📐 Pour une impression 1:1, aller dans Parametres supplementaires et cliquer sur Taille reelle</span>
+  <div class="marquee-track">
+    <span>📐 Pour une impression 1:1, aller dans Parametres supplementaires et selectionner Taille reelle</span>
+    <span>📐 Pour une impression 1:1, aller dans Parametres supplementaires et selectionner Taille reelle</span>
   </div>
 </div>
 
@@ -156,9 +156,9 @@ function envoyerMail(){
   const sujet = "Demande de telechargement PolarisImplants";
 
   const corps =
-    "Nom : " + nom + "%0A" +
-    "Prenom : " + prenom + "%0A" +
-    "Email : " + email;
+    "Nom = " + nom + "\n" +
+    "Prenom = " + prenom + "\n" +
+    "Email = " + email;
 
   window.location.href =
     "mailto:polarisimplants@gmail.com" +
