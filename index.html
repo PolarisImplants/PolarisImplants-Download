@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>PolarisImplants – Téléchargement</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --bg:#0b1220;--card:#070c18;--text:#e5e7eb;--muted:#9ca3af;
+  --blue:#1d4ed8;--blue2:#2563eb;--radius:14px;
+}
+body{
+  margin:0;
+  font-family:system-ui;
+  background:radial-gradient(1200px 600px at 50% 0%,#101a35 0%,var(--bg) 60%);
+  color:var(--text);
+}
+
+/* Bandeau défilant */
+.marquee{
+  background:#1d4ed8;
+  color:#fff;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.marquee span{
+  display:inline-block;
+  padding:10px 0;
+  font-weight:600;
+  animation:marq 16s linear infinite;
+}
+@keyframes marq{
+  0%{transform:translateX(100%);}
+  100%{transform:translateX(-100%);}
+}
+
+.wrap{
+  max-width:500px;
+  margin:auto;
+  padding:30px 16px 50px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+h1{
+  margin-top:0;
+  text-align:center;
+  font-size:26px;
+}
+
+p{
+  text-align:center;
+  color:#cbd5f5;
+  font-size:15px;
+}
+
+label{
+  display:block;
+  margin-top:14px;
+  font-weight:600;
+}
+
+input{
+  width:100%;
+  margin-top:6px;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  font-size:15px;
+}
+
+button{
+  margin-top:20px;
+  width:100%;
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  background:var(--blue);
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+button:hover{background:var(--blue2);}
+
+.footer{
+  margin-top:24px;
+  text-align:center;
+  font-size:13px;
+  color:#9ca3af;
+}
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+  <span>
+    ℹ️ PolarisImplants — la validation par le réel
+  </span>
+</div>
+
+<div class="wrap">
+  <div class="card">
+    <h1>Téléchargement PolarisImplants</h1>
+    <p>
+      Entrez votre <b>nom</b>, <b>prénom</b> et <b>adresse e-mail</b>.<br>
+      Un lien de téléchargement vous sera envoyé.
+    </p>
+
+    <form onsubmit="sendMail(); return false;">
+      <label>Nom</label>
+      <input id="nom" required>
+
+      <label>Prénom</label>
+      <input id="prenom" required>
+
+      <label>Email</label>
+      <input id="email" type="email" required>
+
+      <button type="submit">
+        Recevoir le lien de téléchargement
+      </button>
+    </form>
+
+    <div class="footer">
+      PolarisImplants © 2025
+    </div>
+  </div>
+</div>
+
+<script>
+function sendMail(){
+  const nom = document.getElementById("nom").value;
+  const prenom = document.getElementById("prenom").value;
+  const email = document.getElementById("email").value;
+
+  const subject = encodeURIComponent("Demande téléchargement PolarisImplants");
+  const body = encodeURIComponent(
+    "Nouvelle demande de téléchargement PolarisImplants\n\n" +
+    "Nom : " + nom + "\n" +
+    "Prénom : " + prenom + "\n" +
+    "Email : " + email
+  );
+
+  window.location.href =
+    "mailto:polarisimplants@gmail.com?subject=" + subject + "&body=" + body;
+}
+</script>
+
+</body>
+</html>
