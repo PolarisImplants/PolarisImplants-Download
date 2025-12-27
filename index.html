@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>PolarisImplants – Téléchargement</title>
+<title>PolarisImplants – Telechargement</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -23,7 +23,7 @@ body{
   color:var(--text);
 }
 
-/* ===== Bandeau défilant ===== */
+/* ===== Bandeau defilant ===== */
 .marquee{
   background:#1d4ed8;
   color:#fff;
@@ -33,7 +33,8 @@ body{
 
 .marquee-content{
   display:inline-flex;
-  animation:scroll 14s linear infinite;
+  transform:translateX(0);
+  animation:scroll 18s linear infinite;
 }
 
 .marquee-content span{
@@ -42,8 +43,8 @@ body{
 }
 
 @keyframes scroll{
-  from{ transform:translateX(0); }
-  to{ transform:translateX(-50%); }
+  0%   { transform:translateX(0); }
+  100% { transform:translateX(-50%); }
 }
 
 .wrap{
@@ -117,28 +118,28 @@ input{
 <!-- Bandeau -->
 <div class="marquee">
   <div class="marquee-content">
-    <span>📐 Pour une impression 1:1, aller dans la boîte de dialogue, paramètres supplémentaires et cliquer sur Taille réelle</span>
-    <span>📐 Pour une impression 1:1, aller dans la boîte de dialogue, paramètres supplémentaires et cliquer sur Taille réelle</span>
+    <span>📐 Pour une impression 1:1, aller dans Parametres supplementaires et cliquer sur Taille reelle</span>
+    <span>📐 Pour une impression 1:1, aller dans Parametres supplementaires et cliquer sur Taille reelle</span>
   </div>
 </div>
 
 <div class="wrap">
   <div class="hero">
     <h1>PolarisImplants</h1>
-    <p>La validation par le réel</p>
+    <p>La validation par le reel</p>
   </div>
 
   <div class="card">
     <p>
-      Entrez votre <b>nom</b>, <b>prénom</b> et <b>adresse e-mail</b>.<br>
-      Un lien de téléchargement de l’application <b>PolarisImplants</b> vous sera envoyé.
+      Entrez votre <b>nom</b>, <b>prenom</b> et <b>adresse e-mail</b>.<br>
+      Un lien de telechargement de l’application <b>PolarisImplants</b> vous sera envoye.
     </p>
 
     <input id="nom" placeholder="Nom">
-    <input id="prenom" placeholder="Prénom">
+    <input id="prenom" placeholder="Prenom">
     <input id="email" placeholder="Adresse e-mail">
 
-    <a class="btn" href="#" onclick="envoyerMail()">Télécharger l’application</a>
+    <a class="btn" href="#" onclick="envoyerMail()">Telecharger l’application</a>
   </div>
 
   <div class="footer">
@@ -148,21 +149,21 @@ input{
 
 <script>
 function envoyerMail(){
-  const nom = encodeURIComponent(document.getElementById('nom').value);
-  const prenom = encodeURIComponent(document.getElementById('prenom').value);
-  const email = encodeURIComponent(document.getElementById('email').value);
+  const nom = document.getElementById('nom').value;
+  const prenom = document.getElementById('prenom').value;
+  const email = document.getElementById('email').value;
 
-  const sujet = "Demande%20de%20t%C3%A9l%C3%A9chargement%20PolarisImplants";
+  const sujet = "Demande de telechargement PolarisImplants";
 
   const corps =
-    "Nom%20=%20" + nom +
-    "%0APr%C3%A9nom%20=%20" + prenom +
-    "%0AEmail%20=%20" + email;
+    "Nom : " + nom + "%0A" +
+    "Prenom : " + prenom + "%0A" +
+    "Email : " + email;
 
   window.location.href =
     "mailto:polarisimplants@gmail.com" +
-    "?subject=" + sujet +
-    "&body=" + corps;
+    "?subject=" + encodeURIComponent(sujet) +
+    "&body=" + encodeURIComponent(corps);
 }
 </script>
 
